@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>PULSE DASH — a neon rhythm runner</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='4' width='24' height='24' rx='4' fill='%233fe0ff'/><rect x='9' y='9' width='14' height='14' rx='2' fill='%23ffe14d'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="1280" height="720"></canvas>
+
+  <!-- in-game HUD -->
+  <div id="hud" class="overlay passthrough">
+    <div id="progress"><div id="progress-fill"></div><div id="progress-best"></div></div>
+    <div id="pct">0%</div>
+    <div id="coin-dots"><span></span><span></span><span></span></div>
+    <button id="btn-pause" class="icon-btn" title="Pause (Esc)">II</button>
+  </div>
+
+  <!-- title screen -->
+  <div id="menu" class="overlay visible">
+    <h1 id="logo">PULSE<span>DASH</span></h1>
+    <p class="tag">a neon tribute to Geometry Dash</p>
+    <button id="btn-start" class="big-btn">PLAY</button>
+    <div class="row">
+      <button id="btn-mute" class="icon-btn" title="Mute (M)">🔊</button>
+      <button id="btn-full" class="icon-btn" title="Fullscreen">⛶</button>
+    </div>
+    <p class="hint">SPACE / CLICK — jump &amp; fly&nbsp;&nbsp;·&nbsp;&nbsp;ESC — pause&nbsp;&nbsp;·&nbsp;&nbsp;R — restart</p>
+  </div>
+
+  <!-- level select -->
+  <div id="select" class="overlay">
+    <h2>SELECT LEVEL</h2>
+    <div id="cards"></div>
+    <button id="btn-back" class="small-btn">← BACK</button>
+  </div>
+
+  <!-- pause -->
+  <div id="pause" class="overlay">
+    <h2 id="pause-title">PAUSED</h2>
+    <button id="btn-resume" class="big-btn">RESUME</button>
+    <button id="btn-practice" class="small-btn">PRACTICE MODE: OFF</button>
+    <button id="btn-retry" class="small-btn">RESTART (R)</button>
+    <button id="btn-exit" class="small-btn">EXIT TO MENU</button>
+  </div>
+
+  <!-- level complete -->
+  <div id="win" class="overlay">
+    <h2 class="win-title">LEVEL COMPLETE!</h2>
+    <p id="win-name" class="tag"></p>
+    <div id="win-coins"><span></span><span></span><span></span></div>
+    <div class="stats">
+      <div><label>ATTEMPTS</label><b id="st-attempts">1</b></div>
+      <div><label>TIME</label><b id="st-time">0s</b></div>
+      <div><label>JUMPS</label><b id="st-jumps">0</b></div>
+    </div>
+    <div class="row">
+      <button id="btn-next" class="big-btn">NEXT LEVEL →</button>
+      <button id="btn-replay" class="small-btn">REPLAY</button>
+      <button id="btn-menu" class="small-btn">MENU</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <div id="vignette"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
